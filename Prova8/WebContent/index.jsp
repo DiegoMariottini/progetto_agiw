@@ -7,6 +7,12 @@
 <body>
 <script src="codiceJS/index.js"></script>
 
+<DIV ALIGN="right">
+	<font face="Times New Roman" size="3">
+		<dfn><a href="1.jpg">inserisci il tuo cv</a>
+		</dfn></font>
+	</DIV>
+
 	<div
 		style="position: absolute; width: 500px; height: 200px; left: 50%; top: 50%; margin-left: -250px; margin-top: -100px; text-align: center;">
 		<form onSubmit='return false' name='campoDiRicerca' id='campoDiRicerca' action="Ricerca.do" method="get">

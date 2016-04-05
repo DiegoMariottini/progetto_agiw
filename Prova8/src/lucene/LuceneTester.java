@@ -17,10 +17,12 @@ public class LuceneTester {
    public static void main(String[] args) {
       LuceneTester tester;
       try {
+    	  
+    	  
          tester = new LuceneTester();
-        // tester.createIndex();
+         tester.createIndex();
          // stringa da cercare
-         tester.search("Roberto");
+         tester.search("Robrto");
       } catch (IOException e) {
          e.printStackTrace();
       } catch (ParseException e) {
