@@ -8,7 +8,10 @@
 <title>Si è verificato un errore</title>
 </head>
 <body>
-	<div id="content">
+	
+	<div
+	id="content" style="position: absolute; width: 500px; height: 200px; left: 50%; top: 50%; margin-left: -250px; margin-top: -100px; text-align: center;">
+	
 		<div id="maincontent">Si è verificare un errore.</div>
 		<div id="footer">
 			<p>
