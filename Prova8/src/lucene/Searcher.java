@@ -3,7 +3,6 @@ package lucene;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.DirectoryReader;
@@ -16,6 +15,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.analysis.it.ItalianAnalyzer;
 
 public class Searcher {
 	
@@ -30,7 +30,7 @@ public class Searcher {
       IndexReader reader = DirectoryReader.open(indexDirectory);
       indexSearcher = new IndexSearcher(reader);
       queryParser = new QueryParser(LuceneConstants.CONTENTS,
-         new StandardAnalyzer());
+         new ItalianAnalyzer());
    }
    
    public TopDocs search(String searchQuery) throws IOException, ParseException {
