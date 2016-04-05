@@ -17,7 +17,11 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.analysis.it.ItalianAnalyzer;
+import org.apache.lucene.analysis.it.ItalianLightStemFilter;
 
+import org.apache.lucene.analysis.it.ItalianLightStemmer;
+ 
 public class Indexer {
 
 	private IndexWriter writer;
@@ -28,7 +32,7 @@ public class Indexer {
 				FSDirectory.open(Paths.get(indexDirectoryPath));
 		
 		//create the indexer
-		Analyzer analyzer = new StandardAnalyzer();
+		Analyzer analyzer = new ItalianAnalyzer();
   		IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
 		writer = new IndexWriter(indexDirectory, iwc);
 	}

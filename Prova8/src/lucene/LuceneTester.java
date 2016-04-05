@@ -18,9 +18,9 @@ public class LuceneTester {
       LuceneTester tester;
       try {
          tester = new LuceneTester();
-         tester.createIndex();
+         //tester.createIndex();
          // stringa da cercare
-         tester.search("i");
+         tester.search("Robert");
       } catch (IOException e) {
          e.printStackTrace();
       } catch (ParseException e) {
