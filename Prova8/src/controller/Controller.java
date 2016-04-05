@@ -74,11 +74,12 @@ public class Controller extends HttpServlet {
 	//i java le devo anche mettere in WEB-INF-classes-<qualsiasiCartella>
 	public void init() {
 		this.comando2azione = new HashMap<String, String>();
-
+		this.comando2azione.put("ricerca","action.AzioneRicerca" );
 
 		//il jsp a cui sono collegati i vari comandi partendo da WebContent
 		this.esito2pagina= new HashMap<String, String>();
 		this.esito2pagina.put("errore", "/errori/error.jsp");
+		this.esito2pagina.put("risultati", "/risultati.jsp");
 
 
 
