@@ -41,17 +41,18 @@
 <div id="risultati">
 
 <% 
+char asc47=47;
 for(File ris : listaRisultati){
+
+	String URL="file:"+asc47+asc47+ris.getPath();
+	System.out.println(URL);
+
 %>
 
-		<br> <a id="Button" href="<% 
-		
-		String pathUrl=ris.getPath();
-		pathUrl= pathUrl.substring(pathUrl.indexOf("Dati"));
-		out.print("http://localhost:8080/Prova8/"+pathUrl);
-			
-		
-		%>">
+
+
+
+		<br> <a id="Button" href=<%=URL %>>
 			<button id="Button">
 
 				<DIV ALIGN="left">
