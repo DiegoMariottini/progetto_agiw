@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script src="codiceJS/index.js"></script>
+
 
 <DIV ALIGN="center">
 		<form onSubmit='return false' name='campoDiRicerca' id='campoDiRicerca' action="ricerca.do" method="post">
