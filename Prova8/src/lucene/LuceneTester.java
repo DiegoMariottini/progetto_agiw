@@ -1,6 +1,9 @@
 package lucene;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -57,4 +60,17 @@ public class LuceneTester {
             + doc.get(LuceneConstants.FILE_PATH));
       }
    }
+   
+   private List<File> searchFile(String searchQuery) throws IOException, ParseException{
+		List<File> lista = new LinkedList<File>();
+		searcher = new Searcher(indexDir);
+		TopDocs hits = searcher.search(searchQuery);
+		
+		for(ScoreDoc scoreDoc : hits.scoreDocs) {
+			Document doc = searcher.getDocument(scoreDoc);
+			File f = new File(doc.get(LuceneConstants.FILE_PATH));
+			lista.add(f);
+		}
+		return lista;
+	}
 }
