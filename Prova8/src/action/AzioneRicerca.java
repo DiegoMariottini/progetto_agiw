@@ -15,7 +15,13 @@ public class AzioneRicerca extends Azione {
 		String query=request.getParameter("query");
 		Facade sistema =new FacadeLucene();
 		sessione.setAttribute("querySessione", query);
-		sessione.setAttribute("risultati", sistema.ricerca(query));
+		try {
+			sessione.setAttribute("risultati", sistema.ricerca(query));
+			System.out.println("entrato");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "risultati";
 	}

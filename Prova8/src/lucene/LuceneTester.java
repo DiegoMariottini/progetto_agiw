@@ -12,30 +12,14 @@ import org.apache.lucene.search.TopDocs;
 
 public class LuceneTester {
 	
-   String indexDir = "Index";
-   String dataDir = "Data";
+   static String indexDir = "/home/diegomariottini/git/progetto_agiw/Prova8/Index/";
+   String dataDir = "Data/Dati/Alessandro_Cialfi";
    Indexer indexer;
-   Searcher searcher;
+   static Searcher searcher;
 
-   public static void main(String[] args) {
-      LuceneTester tester;
-      try {
-    	  
-    	  
-         tester = new LuceneTester();
-         tester.createIndex();
-         // stringa da cercare
-         tester.search("Robrto");
-      } catch (IOException e) {
-         e.printStackTrace();
-      } catch (ParseException e) {
-         e.printStackTrace();
-      }
-   }
-
-   
+     
    //funzione per generare l'indice
-   private void createIndex() throws IOException{
+   /* private void createIndex() throws IOException{
       indexer = new Indexer(indexDir);
       int numIndexed;
       long startTime = System.currentTimeMillis();	
@@ -45,24 +29,10 @@ public class LuceneTester {
       System.out.println(numIndexed+" File indexed, time taken: "
          +(endTime-startTime)+" ms");		
    }
-
-   private void search(String searchQuery) throws IOException, ParseException{
-      searcher = new Searcher(indexDir);
-      long startTime = System.currentTimeMillis();
-      TopDocs hits = searcher.search(searchQuery);
-      long endTime = System.currentTimeMillis();
-   
-      System.out.println(hits.totalHits +
-         " documents found. Time :" + (endTime - startTime));
-      for(ScoreDoc scoreDoc : hits.scoreDocs) {
-         Document doc = searcher.getDocument(scoreDoc);
-            System.out.println("File: "
-            + doc.get(LuceneConstants.FILE_PATH));
-      }
-   }
-   
-   private List<File> searchFile(String searchQuery) throws IOException, ParseException{
-		List<File> lista = new LinkedList<File>();
+*/
+   public List<File> search(String searchQuery) throws IOException, ParseException{
+	   
+	   List<File> lista = new LinkedList<File>();
 		searcher = new Searcher(indexDir);
 		TopDocs hits = searcher.search(searchQuery);
 		

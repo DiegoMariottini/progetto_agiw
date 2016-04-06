@@ -1,10 +1,11 @@
 package model;
 
+import java.io.File;
 import java.util.List;
 
 public interface Facade {
 
-	public List<String> ricerca(String query);
+	public List<File> ricerca(String query)throws Exception;
 
 	
 }
