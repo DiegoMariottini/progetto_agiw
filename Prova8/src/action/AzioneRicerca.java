@@ -23,13 +23,15 @@ public class AzioneRicerca extends Azione {
 		
 		Facade sistema =new FacadeLucene();
 		sessione.setAttribute("querySessione", query);
+		System.out.println(query);
 		
-		String miss = Misspelling.checker(query);
+			String miss = Misspelling.checker(query);
+
+			if(!miss.equals(query))
+				sessione.setAttribute("misspelling", miss);
 		
-		if(!miss.equals(query))
-			sessione.setAttribute("misspelling", miss);
-		
-		
+
+
 		try {
 			Map<ScoreDoc, List<File>> risultati = sistema.ricerca(query);	
 			sessione.setAttribute("risultati", risultati.values().iterator().next());

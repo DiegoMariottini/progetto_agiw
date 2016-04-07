@@ -4,14 +4,15 @@ import java.io.IOException;
 
 import lucene.Indexer;
 import lucene.IndexerSpell;
+import lucene.PatterAssolut;
 import lucene.TextFileFilter;
 
 public class InitIndex {
 
-	static String dizionario = "/home/diegomariottini/git/progetto_agiw_due/Prova8/dizionario/Dizionario - nomi/";
-	static String indexDir = "/home/diegomariottini/git/progetto_agiw_due/Prova8/Index/";
-	static String indexDizionario = "/home/diegomariottini/git/progetto_agiw_due/Prova8/dizionario/IndexDizionario/";
-	static String dataDir = "/home/diegomariottini/Scrivania/Dati/Alessandro_Cialfi/";
+	static String dizionario = PatterAssolut.getDizionario();
+	static String indexDir = PatterAssolut.getIndexDir();
+	static String indexDizionario = PatterAssolut.getIndexDizionario();
+	static String dataDir = PatterAssolut.getDataDirPrimo();
 
 	public static void main(String[] args) throws IOException {
 

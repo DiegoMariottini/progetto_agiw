@@ -15,7 +15,7 @@
 			</br>
 			
 			
-			<input onSubmit='return false' type="search" name="query" size="40%"><br>
+			<input onSubmit='return false' id="query" type="search" name="query" size="40%"><br>
 			<% String query=(String) request.getParameter("query"); 
 			session.setAttribute("query", query); 
 			%>

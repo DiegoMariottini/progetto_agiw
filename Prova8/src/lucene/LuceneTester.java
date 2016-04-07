@@ -15,8 +15,8 @@ import org.apache.lucene.search.TopDocs;
 
 public class LuceneTester {
 
-	static String indexDir = "/home/diegomariottini/git/progetto_agiw_due/Prova8/Index/";
-	static String dataDir = "/home/diegomariottini/Scrivania/Dati/Alessandro_Cialfi/";
+	static String indexDir = PatterAssolut.getIndexDir();
+	static String dataDir = PatterAssolut.getDataDirPrimo();
 	Indexer indexer;
 	static Searcher searcher;
 

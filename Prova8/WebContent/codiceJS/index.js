@@ -13,3 +13,7 @@ function SubmitSenzaSpazi(testo){
 		document.campoDiRicerca.submit();
 	}
 }
+function SubmitSenzaSpazi2(){
+	document.campoDiRicerca.query.value=document.campoDiRicerca.missPelling.value;
+	//document.campoDiRicerca.submit();
+}

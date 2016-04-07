@@ -18,17 +18,17 @@ import org.apache.lucene.store.FSDirectory;
 
 public class Misspelling {
 
-	static String path="/home/diegomariottini/git/progetto_agiw_due/Prova8/dizionario";
-	static String dizionario = path+"/Dizionario - nomi/";
+	static String path=PatterAssolut.getDirDizionario();
+	static String dizionario = path+"Dizionario - nomi/";
 
 	
 	public static String checker(String query) throws IOException	{
-		Directory cartellaDizionario = FSDirectory.open(Paths.get(path+"/IndexSpell/"));
+		Directory cartellaDizionario = FSDirectory.open(Paths.get(path+"IndexSpell/"));
 		SpellChecker spell= new SpellChecker(cartellaDizionario);
 		Analyzer anal = new StandardAnalyzer();
 		IndexWriterConfig config = new IndexWriterConfig(anal);
 		
-		Directory cartellaIndice = FSDirectory.open(Paths.get(path+"/IndexDizionario/"));
+		Directory cartellaIndice = FSDirectory.open(Paths.get(path+"IndexDizionario/"));
 		IndexReader ir = DirectoryReader.open(cartellaIndice);
 		String fieldName = "contents";
 		LuceneDictionary dict = new LuceneDictionary( ir, fieldName );

@@ -65,17 +65,33 @@
 	<DIV ALIGN="center">
 
 	
-		<form onSubmit='return false' name='campoDiRicerca' action="ricerca.do" method="post">
+		<form id='campoDiRicerca' onSubmit='return false' name='campoDiRicerca' action="ricerca.do" method="post">
 				<font face="Times New Roman" size="6" color="GREEN"> 
 				
-				<input  onSubmit='return false' type="search" value='<%=request.getSession().getAttribute("querySessione")%>' name="query"> 
+				<input  onSubmit='return false' type="search" value='<%=request.getSession().getAttribute("querySessione")%>' name="query" id='query'> 
 				
 				<%
 	//			session.setAttribute("querySessione", request.getSession().getAttribute("querySessione"));
  	String query = (String) request.getParameter("query");
  	session.setAttribute("query", query);
  %>
+			<button onclick='SubmitSenzaSpazi(query.value)'>cerca</button>
+	<br>
+						<%
+						String consiglio=(String) request.getSession().getAttribute("misspelling");
+						if(consiglio!=null) {
+							 %>
 
+								<input type="button" name='missPelling' onclick='SubmitSenzaSpazi2()' value='<%=consiglio %>'>
+									
+									<%
+							
+							
+						}
+						%>
+
+
+		
 				</font>
 			<br>
 		</form>
@@ -88,25 +104,7 @@
 			if (listaRisultati == null)
 				out.print("Nessun risultato trovato");
 			else {
-		%>
-
-		<button onclick='SubmitSenzaSpazi(query.value)'>cerca</button>
-						
-						<%
-						String consiglio=(String) request.getSession().getAttribute("misspelling");
-						if(consiglio!=null) {
-							 %>
-
-								<button onclick='SubmitSenzaSpazi(<%=consiglio %>)'><%=consiglio %></button>
-									
-									<%
-							
-							
-						}
-						%>
-
-
-			
+		%>			
 			<%
 				for (File ris : listaRisultati) {
 						//	String URL="file:/"+ris.getPath();//.substring(ris.getPath().indexOf("/Dati")+5);
