@@ -38,40 +38,38 @@
 	else{
 %>
 
-<div id="risultati">
-
+<form onSubmit='return false'>
 <% 
-char asc47=47;
 for(File ris : listaRisultati){
+//	String URL="file:/"+ris.getPath();//.substring(ris.getPath().indexOf("/Dati")+5);
+	String URL="http://localhost:3000/"+ris.getPath().substring(ris.getPath().indexOf("/Dati")+5);
+	URL=""+URL.substring(0, URL.length());
+	URL=URL.replaceAll("/", "/");
+	URL=URL.replaceAll("/", "/");
+	//http://localhost:3000/Alessandro_Cialfi/1471-2334-13-545.pdf
+	//http://localhost:3000/Alessandro_Cialfi/1471-2334-13-545.pdf
+	URL=URL.replace(" ", "");
+	
+	%>
 
-	String URL="file:"+asc47+asc47+ris.getPath();
-	System.out.println(URL);
-
-%>
-
-
-
-
-		<br> <a id="Button" href=<%=URL %>>
-			<button id="Button">
-
+		<br>
+<%	//		<button onclick='ApriNuovoUrl("<%=URL % >")'> %>
+			<button id="Button" onClick="javascript:location.href='<%=URL %>'">		
 				<DIV ALIGN="left">
 					<font face="Times New Roman" size="4" color="blue"> 
 					<%=ris.getName() %>
 					</font>
+					<br>
 					<font face="Times New Roman" size="2" color="GREEN">
 							&nbsp;&nbsp;&nbsp;&nbsp; <%=ris.getPath() %> <br>
 					</font>
 				</div>
-
 			</button>
-		</a>
-
-
-		<%
+			
+<%
 }
 %>
-</div>
+</form>
 <%
 }
 %>
