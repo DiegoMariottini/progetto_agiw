@@ -24,62 +24,57 @@
 #box-1 {
 	width: 100%;
 	height: 7%;
-	background: #00000f;
-	position: fixed;
 	top: 0%;
 	right: 0%;
 }
 
 #box-2 {
-	width: 100%;
+	width: 7%;
 	position: relative;
 	top:20%;
 	right: 0%;
 }
 
 #logo {
-	height: 100%;
+	height: 7%;
 	width: 30%;
-	position: relative;
+	position: fixed;
 	top: 0%;
-	right: 5%;
+	right: 66%;
 }
 
 #barraDiRicerca {
-	height: 100%;
+	height: 7%;
 	width: 30%;
-	position: relative;
+	position: fixed;
 	top: 0%;
-	right: 5%;
+	right: 35%;
 }
 
 #pulsanteDiRicerca {
-	height: 100%;
+	height: 7%;
 	width: 30%;
-	position: relative;
+	position: fixed;
 	top: 0%;
-	right: 0%;
+	right: 4%;
 }
 </style>
 </head>
 <body>
 	<script src="codiceJS/index.js"></script>
-	<DIV ALIGN="center" id='box-madre'>
+	<DIV ALIGN="center">
 
-				<div id='box-1'>
 	
-		<form onSubmit='return false' name='campoDiRicerca' id='box-1' action="ricerca.do" method="post">
+		<form onSubmit='return false' name='campoDiRicerca' action="ricerca.do" method="post">
 				<font face="Times New Roman" size="6" color="GREEN"> 
-				<img id='logo' src="1.jpg">
-				<input id='barraDiRicerca' onSubmit='return false' type="search" value='<%=request.getSession().getAttribute("querySessione")%>' name="query"> 
+				
+				<input  onSubmit='return false' type="search" value='<%=request.getSession().getAttribute("querySessione")%>' name="query"> 
+				
 				<%
 	//			session.setAttribute("querySessione", request.getSession().getAttribute("querySessione"));
  	String query = (String) request.getParameter("query");
  	session.setAttribute("query", query);
  %>
-
-					<button id='pulsanteDiRicerca'
-						onclick='SubmitSenzaSpazi(query.value)'>cerca</button>
 
 				</font>
 			<br>
@@ -94,6 +89,22 @@
 				out.print("Nessun risultato trovato");
 			else {
 		%>
+
+		<button onclick='SubmitSenzaSpazi(query.value)'>cerca</button>
+						
+						<%
+						String consiglio=(String) request.getSession().getAttribute("misspelling");
+						if(consiglio!=null) {
+							 %>
+
+								<button onclick='SubmitSenzaSpazi(<%=consiglio %>)'><%=consiglio %></button>
+									
+									<%
+							
+							
+						}
+						%>
+
 
 			
 			<%
@@ -124,7 +135,7 @@
 			<%
 				}
 			%>
-		</div>
+	
 	<%
 		}
 	%>

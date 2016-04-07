@@ -75,6 +75,7 @@ public class Controller extends HttpServlet {
 	public void init() {
 		this.comando2azione = new HashMap<String, String>();
 		this.comando2azione.put("ricerca","action.AzioneRicerca" );
+		this.comando2azione.put("ricercaAfter","action.AzioneRicercaNext" );
 
 		//il jsp a cui sono collegati i vari comandi partendo da WebContent
 		this.esito2pagina= new HashMap<String, String>();

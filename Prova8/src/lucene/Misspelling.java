@@ -18,14 +18,11 @@ import org.apache.lucene.store.FSDirectory;
 
 public class Misspelling {
 
-	static String path="dizionario";
-	static String dizionario = "dizionario/Dizionario - nomi/";
+	static String path="/home/diegomariottini/git/progetto_agiw_due/Prova8/dizionario";
+	static String dizionario = path+"/Dizionario - nomi/";
 
-	public Misspelling()	{
-	}
-
-	public void checker(String query) throws IOException	{
-		
+	
+	public static String checker(String query) throws IOException	{
 		Directory cartellaDizionario = FSDirectory.open(Paths.get(path+"/IndexSpell/"));
 		SpellChecker spell= new SpellChecker(cartellaDizionario);
 		Analyzer anal = new StandardAnalyzer();
@@ -38,10 +35,8 @@ public class Misspelling {
 		spell.indexDictionary(dict, config, false);
 
 
-		Misspelling mis = new Misspelling();
 
-
-		String[] parole = mis.parsing(query);
+		String[] parole = parsing(query);
 		String[] suggerimenti = new String[parole.length];
 		int i =0;
 		for(String s : parole)	{
@@ -55,11 +50,11 @@ public class Misspelling {
 		}
 		spell.close();
 		
-		String querySuggerita = array2String(suggerimenti);
+		return array2String(suggerimenti);
 		
 	}
 
-	private String[] parsing(String query){
+	private static String[] parsing(String query){
 		//nessuno spazio nella stringa: una parola
 		//numero spazi+1 = numero parole
 		int numeroParole = StringUtils.countMatches(query, " ")+1;
@@ -82,7 +77,7 @@ public class Misspelling {
 
 	}
 
-	private String array2String(String[] a)	{
+	private static String array2String(String[] a)	{
 
 		String s = new String();
 		for(String i : a)	{

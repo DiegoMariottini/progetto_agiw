@@ -8,9 +8,9 @@ import lucene.TextFileFilter;
 
 public class InitIndex {
 
-	static String dizionario = "dizionario/Dizionario - nomi/";
+	static String dizionario = "/home/diegomariottini/git/progetto_agiw_due/Prova8/dizionario/Dizionario - nomi/";
 	static String indexDir = "/home/diegomariottini/git/progetto_agiw_due/Prova8/Index/";
-	static String indexDizionario = "dizionario/IndexDizionario/";
+	static String indexDizionario = "/home/diegomariottini/git/progetto_agiw_due/Prova8/dizionario/IndexDizionario/";
 	static String dataDir = "/home/diegomariottini/Scrivania/Dati/Alessandro_Cialfi/";
 
 	public static void main(String[] args) throws IOException {

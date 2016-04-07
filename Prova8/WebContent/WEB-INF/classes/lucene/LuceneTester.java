@@ -2,8 +2,11 @@ package lucene;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -11,31 +14,15 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 
 public class LuceneTester {
-	
-   static String indexDir = "Index";
-   String dataDir = "Data/Dati/Alessandro_Cialfi";
-   Indexer indexer;
-   static Searcher searcher;
 
-   public static void main(String[] args) {
-      LuceneTester tester;
-      try {
-    	  
-    	  
-         tester = new LuceneTester();
-         //tester.createIndex();
-         // stringa da cercare
-         tester.search("Alessandro Cialf");
-      } catch (IOException e) {
-         e.printStackTrace();
-      } catch (ParseException e) {
-         e.printStackTrace();
-      }
-   }
+	static String indexDir = "/home/diegomariottini/git/progetto_agiw_due/Prova8/Index/";
+	static String dataDir = "/home/diegomariottini/Scrivania/Dati/Alessandro_Cialfi/";
+	Indexer indexer;
+	static Searcher searcher;
 
-   
-   //funzione per generare l'indice
-   private void createIndex() throws IOException{
+
+	//funzione per generare l'indice
+	/* private void createIndex() throws IOException{
       indexer = new Indexer(indexDir);
       int numIndexed;
       long startTime = System.currentTimeMillis();	
@@ -45,32 +32,41 @@ public class LuceneTester {
       System.out.println(numIndexed+" File indexed, time taken: "
          +(endTime-startTime)+" ms");		
    }
+	 */
+	
+	
+	public Map<ScoreDoc, List<File>> search(String searchQuery) throws IOException, ParseException{
 
-   private void search(String searchQuery) throws IOException, ParseException{
-      searcher = new Searcher(indexDir);
-      long startTime = System.currentTimeMillis();
-      TopDocs hits = searcher.search(searchQuery);
-      long endTime = System.currentTimeMillis();
-   
-      System.out.println(hits.totalHits +
-         " documents found. Time :" + (endTime - startTime));
-      for(ScoreDoc scoreDoc : hits.scoreDocs) {
-         Document doc = searcher.getDocument(scoreDoc);
-            System.out.println("File: "
-            + doc.get(LuceneConstants.FILE_PATH));
-      }
-   }
-   
-   public static List<File> searchFile(String searchQuery) throws IOException, ParseException{
-		List<File> lista = new LinkedList<File>();
+		List<File> files = new LinkedList<File>();
+		Map<ScoreDoc, List<File>> hits2files = new HashMap<ScoreDoc, List<File>>();
 		searcher = new Searcher(indexDir);
 		TopDocs hits = searcher.search(searchQuery);
-		
+		ScoreDoc score = null;
 		for(ScoreDoc scoreDoc : hits.scoreDocs) {
 			Document doc = searcher.getDocument(scoreDoc);
 			File f = new File(doc.get(LuceneConstants.FILE_PATH));
-			lista.add(f);
+			files.add(f);
+			score = scoreDoc;
 		}
-		return lista;
+		
+		hits2files.put(score, files);
+		return hits2files;
+	}
+	
+	public Map<ScoreDoc, List<File>> searchAfter(ScoreDoc score, String searchQuery) throws IOException, ParseException{
+
+		List<File> files = new LinkedList<File>();
+		Map<ScoreDoc, List<File>> hits2files = new HashMap<ScoreDoc, List<File>>();
+		searcher = new Searcher(indexDir);
+		TopDocs hits = searcher.searchAfter(score, searchQuery);
+		ScoreDoc scoreLocal = null;
+		for(ScoreDoc scoreDoc : hits.scoreDocs) {
+			Document doc = searcher.getDocument(scoreDoc);
+			File f = new File(doc.get(LuceneConstants.FILE_PATH));
+			files.add(f);
+			scoreLocal = scoreDoc;
+		}
+		hits2files.put(scoreLocal, files);
+		return hits2files;
 	}
 }
