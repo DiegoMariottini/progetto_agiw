@@ -69,11 +69,11 @@
 				<div id='box-1'>
 	
 		<form onSubmit='return false' name='campoDiRicerca' id='box-1' action="ricerca.do" method="post">
-				<font face="Times New Roman" size="6" color="GREEN"> <img
-					id='logo' src="1.jpg"> <input id='barraDiRicerca'
-					onSubmit='return false' type="search"
-					value=<%=request.getSession().getAttribute("querySessione")%>
-					name="query"> <%
+				<font face="Times New Roman" size="6" color="GREEN"> 
+				<img id='logo' src="1.jpg">
+				<input id='barraDiRicerca' onSubmit='return false' type="search" value='<%=request.getSession().getAttribute("querySessione")%>' name="query"> 
+				<%
+	//			session.setAttribute("querySessione", request.getSession().getAttribute("querySessione"));
  	String query = (String) request.getParameter("query");
  	session.setAttribute("query", query);
  %>
@@ -131,6 +131,10 @@
 
 
 
+<% //BottoneNext %>
+		<form action="ricercaAfter.do" method="post">
+		<input type="submit">
+	</form>
 
 </body>
 </html>

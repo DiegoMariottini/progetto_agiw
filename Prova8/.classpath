@@ -18,5 +18,7 @@
 	<classpathentry kind="lib" path="lib/lucene-queries-5.5.0.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-queryparser-5.5.0.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-sandbox-5.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-suggest-5.5.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

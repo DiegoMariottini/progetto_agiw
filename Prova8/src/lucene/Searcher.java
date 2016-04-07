@@ -37,6 +37,11 @@ public class Searcher {
       query = queryParser.parse(searchQuery);
       return indexSearcher.search(query, LuceneConstants.MAX_SEARCH);
    }
+   
+   public TopDocs searchAfter(ScoreDoc score, String searchQuery)	throws IOException, ParseException {
+	   query = queryParser.parse(searchQuery);
+	   return indexSearcher.searchAfter(score, query, LuceneConstants.MAX_SEARCH);
+   }
 
    public Document getDocument(ScoreDoc scoreDoc) 
       throws CorruptIndexException, IOException{
