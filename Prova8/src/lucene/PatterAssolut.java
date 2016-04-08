@@ -13,13 +13,16 @@ public class PatterAssolut {
 	static String dirDizionario=home+"git/progetto_agiw_due/Prova8/dizionario/";
 	static String dizionario =home+"git/progetto_agiw_due/Prova8/dizionario/Dizionario - nomi/";
 	static String indexDizionario = home+"git/progetto_agiw_due/Prova8/dizionario/IndexDizionario/";
-
+	static String dirValutazione=home+"Scrivania/";
 	
 	
 	public PatterAssolut() {
 	}
 public static String getDizionario() {
 	return dizionario;
+}
+public static String getDirValutazione() {
+	return dirValutazione;
 }
 public static String getIndexDizionario() {
 	return indexDizionario;
