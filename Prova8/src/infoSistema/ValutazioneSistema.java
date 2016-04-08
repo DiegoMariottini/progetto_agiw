@@ -35,6 +35,8 @@ public static void main(String[] args) {
 		
 		try {
 			PrintWriter writerValutazione = new PrintWriter(fileValutazione, "UTF-8");
+			writerValutazione.println("nome e cognome \t  positivi totali  \t  file totali restituiti \t Doc.restituiti  \t  precision  \t  recall ");
+			
 			//writerValutazione.println("");
 			List<String> nomi=new ArrayList<String>(creaListaCartelle());
 				for(String nome:nomi){
@@ -45,10 +47,15 @@ public static void main(String[] args) {
 					nomeCartella=nomeCartella.substring(0,(nomeCartella.length()));
 					File f = new File (dataDir+nomeCartella);
 					if(f.exists()){
-						int positivi=f.listFiles().length;
-						int restituiti=searchForValuation(nome);
-						int positiviRestituitiLucene= positiviRestituiti(nome, nomeCartella);
-						String frase=nome+"\t"+positivi+"\t"+restituiti+"\t"+positiviRestituitiLucene;
+						double relevantElement=f.listFiles().length;
+						double selectedElements=searchForValuation(nome);
+						double truePositiv= positiviRestituiti(nome, nomeCartella);
+							
+						double precision= truePositiv/selectedElements;
+						double recall=truePositiv/relevantElement;
+						
+						
+						String frase=nome+"\t"+relevantElement+"\t"+selectedElements+"\t"+truePositiv+"\t"+precision+"\t"+recall;
 						writerValutazione.println(frase);
 						System.out.println(frase);
 						
@@ -90,7 +97,9 @@ public static void main(String[] args) {
 	}
 	
 	public static boolean isPositive(File file,String nomeCartella){
-		return file.getPath().contains(nomeCartella);
+		String path="/home/diegomariottini/Scrivania/Dati/";
+		String stringaDaConsiderare=file.getPath().substring(path.length());
+		return stringaDaConsiderare.contains(nomeCartella);
 	}
 	
 	
