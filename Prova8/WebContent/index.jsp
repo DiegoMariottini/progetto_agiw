@@ -20,7 +20,7 @@
 			session.setAttribute("query", query); 
 			%>
 
-			<button onclick='SubmitSenzaSpazi(query.value)'>
+			<button name='cerca' onclick='SubmitSenzaSpazi(query.value)'>
 				cerca
 			</button>
 			

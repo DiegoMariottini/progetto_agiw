@@ -82,7 +82,7 @@
 						if(consiglio!=null) {
 							 %>
 
-								<input type="button" name='missPelling' onclick='SubmitSenzaSpazi2()' value='<%=consiglio %>'>
+								<input type="button" name='missPelling' onclick='SubmitSenzaSpazi2("<%=consiglio %>")' value='<%=consiglio %>'>
 									
 									<%
 							
