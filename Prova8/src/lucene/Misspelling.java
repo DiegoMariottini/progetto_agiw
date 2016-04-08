@@ -23,6 +23,27 @@ public class Misspelling {
 
 	
 	public static String checker(String query) throws IOException	{
+	
+		String queryModificata=query;
+		//modificato
+		
+		while(queryModificata.contains("  ")){
+			queryModificata=queryModificata.replace("  ", " ");
+		}
+	/*	
+		int lunghezzaQueryModificata=queryModificata.length()-1;
+		while(queryModificata.charAt(lunghezzaQueryModificata)==' '){
+			lunghezzaQueryModificata--;
+			queryModificata=queryModificata.substring(0, lunghezzaQueryModificata);
+		}
+		*/
+		
+		query=queryModificata;
+		
+		
+		
+		
+		
 		Directory cartellaDizionario = FSDirectory.open(Paths.get(path+"IndexSpell/"));
 		SpellChecker spell= new SpellChecker(cartellaDizionario);
 		Analyzer anal = new StandardAnalyzer();
