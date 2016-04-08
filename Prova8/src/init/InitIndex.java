@@ -12,10 +12,13 @@ public class InitIndex {
 	static String dizionario = PatterAssolut.getDizionario();
 	static String indexDir = PatterAssolut.getIndexDir();
 	static String indexDizionario = PatterAssolut.getIndexDizionario();
-	static String dataDir = PatterAssolut.getDataDirPrimo();
+	static String dataDir = PatterAssolut.getDataDir();
 
 	public static void main(String[] args) throws IOException {
-
+		
+		
+		
+		
 		try{
 			IndexerSpell indexerSpell = new IndexerSpell(indexDizionario);
 			indexerSpell.createIndex(dizionario, new TextFileFilter());
@@ -24,8 +27,17 @@ public class InitIndex {
 
 			Indexer indexer = new Indexer(indexDir);
 			int numIndexed;
-			long startTime = System.currentTimeMillis();	
-			numIndexed = indexer.createIndex(dataDir, new TextFileFilter());
+			long startTime = System.currentTimeMillis();
+			
+			//Lodevo iterare per ogni cartella
+			
+			String nomeCartella="Alessandro_Cialfi/";
+			numIndexed = indexer.createIndex(dataDir+nomeCartella, new TextFileFilter());
+			
+			//fineIndicizzazione
+			
+			
+			
 			long endTime = System.currentTimeMillis();
 			indexer.close();
 			System.out.println(numIndexed+" File indexed, time taken: "

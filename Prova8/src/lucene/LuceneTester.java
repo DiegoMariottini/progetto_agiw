@@ -2,7 +2,7 @@ package lucene;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.apache.lucene.search.TopDocs;
 public class LuceneTester {
 
 	static String indexDir = PatterAssolut.getIndexDir();
-	static String dataDir = PatterAssolut.getDataDirPrimo();
+//	static String dataDir = PatterAssolut.getDataDirPrimo();
 	Indexer indexer;
 	static Searcher searcher;
 
