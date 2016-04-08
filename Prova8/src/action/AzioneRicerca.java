@@ -23,7 +23,6 @@ public class AzioneRicerca extends Azione {
 		
 		Facade sistema =new FacadeLucene();
 		sessione.setAttribute("querySessione", query);
-		System.out.println(query);
 		
 			String miss = Misspelling.checker(query);
 
