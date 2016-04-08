@@ -27,17 +27,30 @@ public class Misspelling {
 		String queryModificata=query;
 		//modificato
 		
+		//elimino tutti i doppi spazi
 		while(queryModificata.contains("  ")){
 			queryModificata=queryModificata.replace("  ", " ");
 		}
-	/*	
-		int lunghezzaQueryModificata=queryModificata.length()-1;
-		while(queryModificata.charAt(lunghezzaQueryModificata)==' '){
-			lunghezzaQueryModificata--;
-			queryModificata=queryModificata.substring(0, lunghezzaQueryModificata);
-		}
-		*/
 		
+		//tolgo tutti gli enter
+		char asc13=13;
+		queryModificata=queryModificata.replaceAll(""+asc13, "");
+		
+		//tolgo tutti gli spazi finali
+		
+		
+		
+		
+		
+		int lunghezzaQueryModificata=queryModificata.length()-1;
+		
+		char nonFinale=' ';
+		
+		while(queryModificata.charAt(lunghezzaQueryModificata)==nonFinale){
+			lunghezzaQueryModificata=lunghezzaQueryModificata-1;
+			}
+		
+		queryModificata=queryModificata.substring(0, lunghezzaQueryModificata+1);
 		query=queryModificata;
 		
 		
